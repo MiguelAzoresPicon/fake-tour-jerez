@@ -1,31 +1,35 @@
+<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FAKE TOUR JEREZ</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
+      background: #fff;
       color: #3036DB;
-      display: flex; flex-direction: column; align-items: center;
-      min-height: 100vh;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="2" fill="%23FFD54F" opacity="0.3"/></svg>');
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     header {
       margin-top: 40px;
       text-align: center;
     }
     header img {
-      max-width: 160px;
+      max-width: 200px; /* Logo más grande */
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
     h1 {
       margin: 12px 0 6px;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 600;
     }
     p.tagline {
@@ -33,57 +37,177 @@
       font-size: 1rem;
       font-weight: 300;
     }
+    main {
+      width: 90%;
+      max-width: 600px;
+      margin: 40px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center; /* Centrar contenido */
+    }
     .links {
-      width: 90%; max-width: 320px;
-      display: flex; flex-direction: column; gap: 14px;
+      width: 100%;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
     .link-button {
-      display: flex; align-items: center;
+      display: flex;
+      align-items: center;
       justify-content: center;
       padding: 14px;
-      font-size: 1rem; font-weight: 600;
-      color: #ffffff;
-      background-color: #3036DB;
-      border: none; border-radius: 8px;
+      width: 100%;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: #3036DB;
+      border-radius: 8px;
       text-decoration: none;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: background-color 0.3s, transform 0.2s;
     }
     .link-button:hover {
-      background-color: #1f26b0;
+      background: #1f26b0;
       transform: translateY(-2px);
     }
     .link-button .emoji {
       margin-right: 8px;
       font-size: 1.2rem;
     }
+    .form-section, .reviews-section {
+      width: 100%;
+      background: #f9f9f9;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    .form-section h2, .reviews-section h2 {
+      margin-bottom: 16px;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    input, textarea {
+      font-size: 1rem;
+      padding: 10px;
+      border: 2px solid #3036DB;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .rating {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+    }
+    .rating input { display: none; }
+    .rating label {
+      font-size: 1.8rem;
+      color: #ddd;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .rating input:checked ~ label,
+    .rating label:hover,
+    .rating label:hover ~ label {
+      color: #FFD54F;
+    }
+    button {
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: #3036DB;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #1f26b0;
+    }
+    .review-card {
+      background: #f5f5f5;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .review-header .name { font-weight: 600; }
+    .stars { color: #FFD54F; }
+    .stars .empty { color: #ddd; }
+    .comment { font-size: 0.95rem; color: #333; }
     footer {
-      margin-top: auto; margin-bottom: 20px;
-      font-size: 0.8rem; color: #888;
+      margin-bottom: 20px;
+      font-size: 0.8rem;
+      color: #888;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="/static/logo.png" alt="FAKE TOUR JEREZ">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="FAKE TOUR JEREZ">
     <h1>FAKE TOUR JEREZ</h1>
-    <p class="tagline">¡Tour guiri guaranteed! 🧢🕶️🌞</p>
+    <p class="tagline">Esto no es un FREE TOUR, aunque sea un TOUR y sea GRATIS</p>
   </header>
 
-  <div class="links">
-    <a class="link-button" href="https://instagram.com/tu_instagram_1" target="_blank">
-      <span class="emoji">🧢</span>Instagram Guía
-    </a>
-    <a class="link-button" href="https://instagram.com/tu_instagram_2" target="_blank">
-      <span class="emoji">🕶️</span>Instagram Tour
-    </a>
-    <a class="link-button" href="/static/itinerario.pdf" target="_blank">
-      <span class="emoji">🗺️</span>Itinerario PDF
-    </a>
-    <a class="link-button" href="/review">
-      <span class="emoji">✍️</span>Deja tu reseña
-    </a>
-  </div>
+  <main>
+    <div class="links">
+      <a class="link-button" href="https://www.instagram.com/cia.aciegas/" target="_blank"><span class="emoji"></span>Instagram CIA A CIEGAS</a>
+      <a class="link-button" href="https://instagram.com/tu_instagram_2" target="_blank"><span class="emoji"></span>Instagram CULTURA DE BARRIO</a>
+      <a class="link-button" href="/static/itinerario.pdf" target="_blank"><span class="emoji">🗺️</span>Itinerario PDF</a>
+    </div>
+
+    <!-- Formulario antes de reseñas -->
+    <section class="form-section">
+      <h2>Deja tu reseña</h2>
+      <form method="POST">
+        <input name="name" placeholder="Tu nombre" required>
+        <div class="rating">
+          {% for i in range(5,0,-1) %}
+            <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}" {% if i==5 %}checked{% endif %}>
+            <label for="star{{ i }}">★</label>
+          {% endfor %}
+        </div>
+        <textarea name="comment" placeholder="Tu reseña" required></textarea>
+        <button type="submit">Enviar reseña</button>
+      </form>
+    </section>
+
+    <section class="reviews-section">
+      <h2>Últimas Reseñas</h2>
+      {% if reviews %}
+        {% for name, comment, rating in reviews %}
+          <div class="review-card">
+            <div class="review-header">
+              <div class="name">{{ name }}</div>
+              <div class="stars">
+                {% for i in range(rating) %}★{% endfor %}
+                {% for i in range(5-rating) %}<span class="empty">★</span>{% endfor %}
+              </div>
+            </div>
+            <div class="comment">{{ comment }}</div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No hay reseñas aún. ¡Sé el primero!</p>
+      {% endif %}
+    </section>
+  </main>
 
   <footer>© 2025 FAKE TOUR JEREZ</footer>
 </body>
