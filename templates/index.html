@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAKE TOUR JEREZ</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #3036DB;
+      display: flex; flex-direction: column; align-items: center;
+      min-height: 100vh;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="2" fill="%23FFD54F" opacity="0.3"/></svg>');
+    }
+    header {
+      margin-top: 40px;
+      text-align: center;
+    }
+    header img {
+      max-width: 160px;
+    }
+    h1 {
+      margin: 12px 0 6px;
+      font-size: 2.2rem;
+      font-weight: 600;
+    }
+    p.tagline {
+      margin: 0 0 24px;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+    .links {
+      width: 90%; max-width: 320px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .link-button {
+      display: flex; align-items: center;
+      justify-content: center;
+      padding: 14px;
+      font-size: 1rem; font-weight: 600;
+      color: #ffffff;
+      background-color: #3036DB;
+      border: none; border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .link-button:hover {
+      background-color: #1f26b0;
+      transform: translateY(-2px);
+    }
+    .link-button .emoji {
+      margin-right: 8px;
+      font-size: 1.2rem;
+    }
+    footer {
+      margin-top: auto; margin-bottom: 20px;
+      font-size: 0.8rem; color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="/static/logo.png" alt="FAKE TOUR JEREZ">
+    <h1>FAKE TOUR JEREZ</h1>
+    <p class="tagline">¡Tour guiri guaranteed! 🧢🕶️🌞</p>
+  </header>
+
+  <div class="links">
+    <a class="link-button" href="https://instagram.com/tu_instagram_1" target="_blank">
+      <span class="emoji">🧢</span>Instagram Guía
+    </a>
+    <a class="link-button" href="https://instagram.com/tu_instagram_2" target="_blank">
+      <span class="emoji">🕶️</span>Instagram Tour
+    </a>
+    <a class="link-button" href="/static/itinerario.pdf" target="_blank">
+      <span class="emoji">🗺️</span>Itinerario PDF
+    </a>
+    <a class="link-button" href="/review">
+      <span class="emoji">✍️</span>Deja tu reseña
+    </a>
+  </div>
+
+  <footer>© 2025 FAKE TOUR JEREZ</footer>
+</body>
+</html>

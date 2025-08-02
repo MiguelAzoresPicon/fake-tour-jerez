@@ -3,51 +3,43 @@ import sqlite3
 
 app = Flask(__name__)
 
-# Inicializar o crear la base de datos si no existe
 def init_db():
     with sqlite3.connect('reviews.db') as con:
         cur = con.cursor()
-        cur.execute('''
-            CREATE TABLE IF NOT EXISTS reviews (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT,
-                comment TEXT,
-                rating INTEGER CHECK(rating BETWEEN 1 AND 5),
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-            )
-        ''')
+        cur.execute('''CREATE TABLE IF NOT EXISTS reviews (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            comment TEXT
+        )''')
         con.commit()
 
-# Ruta principal: muestra y procesa el formulario y las reseñas
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
+    return render_template('index.html')
+
+@app.route('/review', methods=['GET', 'POST'])
+def review():
     if request.method == 'POST':
-        # Recoger datos del formulario
-        name = request.form.get('name', '').strip()
-        comment = request.form.get('comment', '').strip()
-        try:
-            rating = int(request.form.get('rating', '5'))
-        except ValueError:
-            rating = 5
-        # Insertar en la base de datos
+        name = request.form['name']
+        comment = request.form['comment']
         with sqlite3.connect('reviews.db') as con:
             cur = con.cursor()
-            cur.execute(
-                "INSERT INTO reviews (name, comment, rating) VALUES (?, ?, ?)",
-                (name, comment, rating)
-            )
+            cur.execute("INSERT INTO reviews (name, comment) VALUES (?, ?)", (name, comment))
             con.commit()
-        return redirect('/')
+        return redirect('/gracias')
+    return render_template('review.html')
 
-    # GET: obtener las 5 últimas reseñas
+@app.route('/gracias')
+def gracias():
+    return render_template('gracias.html')
+
+@app.route('/ver')
+def ver():
     with sqlite3.connect('reviews.db') as con:
         cur = con.cursor()
-        cur.execute(
-            'SELECT name, comment, rating FROM reviews ORDER BY created_at DESC LIMIT 5'
-        )
+        cur.execute("SELECT name, comment FROM reviews")
         reviews = cur.fetchall()
-
-    return render_template('index.html', reviews=reviews)
+    return render_template('ver.html', reviews=reviews)
 
 if __name__ == '__main__':
     init_db()

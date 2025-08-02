@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Reseñas Recibidas</title></head>
+<body style="font-family: 'Poppins', sans-serif; padding:20px;">
+  <h2 style="color:#3036DB;">Reseñas Recibidas</h2>
+  <ul>
+    {% for name, comment in reviews %}
+      <li><strong>{{ name }}:</strong> {{ comment }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

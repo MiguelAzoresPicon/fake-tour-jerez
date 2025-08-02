@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reseñas · FAKE TOUR JEREZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0; padding: 20px;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #3036DB;
+      display: flex; flex-direction: column; align-items: center;
+      background-image: linear-gradient(45deg, transparent 49%, #FFD54F 50%, transparent 51%);
+      background-size: 8px 8px;
+    }
+    h2 {
+      font-size: 1.8rem; font-weight: 600;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    form {
+      width: 90%; max-width: 320px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    input, textarea {
+      font-size: 1rem; padding: 12px;
+      border: 2px solid #3036DB;
+      border-radius: 6px;
+      resize: vertical;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #aaa;
+    }
+    button {
+      display: flex; align-items: center; justify-content: center;
+      padding: 14px;
+      font-size: 1rem; font-weight: 600;
+      background-color: #3036DB;
+      color: #fff;
+      border: none; border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    button:hover {
+      background-color: #1f26b0;
+      transform: translateY(-2px);
+    }
+    button .emoji {
+      margin-left: 8px;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>¿Qué tal el tour? 🌴🧴</h2>
+  <form method="POST">
+    <input name="name" placeholder="Tu nombre" required>
+    <textarea name="comment" placeholder="Tu reseña" rows="4" required></textarea>
+    <button type="submit">
+      Enviar reseña <span class="emoji">✍️</span>
+    </button>
+  </form>
+
+</body>
+</html>
